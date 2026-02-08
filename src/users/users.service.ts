@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import pool from '../db'; // samain dengan punyamu
+import pool from '../db';
 
 @Injectable()
 export class UsersService {
@@ -13,13 +13,7 @@ export class UsersService {
   }
 
   async deleteById(id: number) {
-    await pool.query(
-      `
-      UPDATE users
-      SET is_deleted = TRUE
-      WHERE id = $1 AND is_deleted = FALSE
-      RETURNING id, username, role
-      `, [id]);
+    await pool.query(`delete from users where id = $1;`, [id]);
     return { message: 'User deleted' };
   }
 }

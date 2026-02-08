@@ -41,5 +41,4 @@ export class AuthService {
   );
   return result.rows[0];
 }
-
 }

@@ -14,5 +14,4 @@ export class AuthController {
   register(@Body() body: any) {
     return this.authService.register(body.username, body.password);
 }
-
 }
